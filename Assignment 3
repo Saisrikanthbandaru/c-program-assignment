@@ -1,1 +1,276 @@
+ #include<stdio.h> 
+  
+ int main() { 
+    int n, i, flag = 0; 
+  
+    printf("Enter a positive integer: "); 
+    scanf("%d",&n); 
+  
+    if (n <= 1) 
+       printf("%d is not a prime number.", n); 
+    else { 
+       for(i=2; i<=n/2; ++i) { 
+           
+          if(n%i == 0) { 
+             flag = 1; 
+             break; 
+          } 
+       } 
+       if (flag == 0) 
+          printf("%d is a prime number.", n); 
+       else 
+          printf("%d is not a prime number.", n); 
+    } 
+    return 0; 
+ }
 
+
+
+
+
+ #include <stdio.h> 
+ int checkPrimeNumber(int n); 
+ int main() { 
+  
+   int n1, n2, i, flag; 
+  
+   printf("Enter two positive integers: "); 
+   scanf("%d %d", &n1, &n2); 
+  
+   // swap n1 and n2 if n1 > n2 
+   if (n1 > n2) { 
+     n1 = n1 + n2; 
+     n2 = n1 - n2; 
+     n1 = n1 - n2; 
+   } 
+  
+   printf("Prime numbers between %d and %d are: ", n1, n2); 
+   for (i = n1 + 1; i < n2; ++i) { 
+  
+     // flag will be equal to 1 if i is prime 
+     flag = checkPrimeNumber(i); 
+  
+     if (flag == 1) { 
+       printf("%d ", i); 
+     } 
+   } 
+    
+   return 0; 
+ } 
+  
+ // user-defined function to check prime number 
+ int checkPrimeNumber(int n) { 
+   int j, flag = 1; 
+  
+   for (j = 2; j <= n / 2; ++j) { 
+  
+     if (n % j == 0) { 
+       flag = 0; 
+       break; 
+     } 
+   } 
+  
+   return flag; 
+ }
+
+
+
+
+ #include<stdio.h> 
+  
+ int gcd(int a, int b) { 
+     int temp; 
+     while(b != 0) { 
+         temp = b; 
+         b = a % b; 
+         a = temp; 
+     } 
+     return a; 
+ } 
+  
+ int lcm(int a, int b) { 
+     return (a*b)/gcd(a, b); 
+ } 
+  
+ int main() { 
+     int a, b; 
+     printf("Enter two numbers: "); 
+     scanf("%d %d", &a, &b); 
+     printf("GCD of %d and %d is %d\n", a, b, gcd(a, b)); 
+     printf("LCM of %d and %d is %d\n", a, b, lcm(a, b)); 
+     return 0; 
+ }
+
+
+
+
+
+
+
+ #include <stdio.h> 
+ void main() 
+ { 
+  int arr1[100], fr1[100]; 
+  int n, i, j, ctr; 
+  printf("\n\nCount frequency of each element of an array:\n"); 
+   printf("Enter the frequency number"\n");         
+  printf("Input the number of elements to be stored in the array :"); 
+   scanf("%d",&n); 
+   printf("Input %d elements in the array :\n",n); 
+   for(i=0;i<n;i++) 
+   { 
+  printf("element - %d : ",i); 
+  scanf("%d",&arr1[i]); 
+  fr1[i] = -1; 
+   } 
+     for(i=0; i<n; i++) 
+     { 
+    ctr = 1; 
+    for(j=i+1; j<n; j++) 
+    { 
+    if(arr1[i]==arr1[j]) 
+     { 
+     ctr++; 
+      fr1[j] = 0; 
+      } 
+     } 
+    if(fr1[i]!=0) 
+      { 
+      fr1[i] = ctr; 
+       } 
+     } 
+     printf("\nThe frequency of all elements of array : \n"); 
+     for(i=0; i<n; i++) 
+     { 
+         if(fr1[i]!=0) 
+         { 
+             printf("%d occurs %d times\n", arr1[i], fr1[i]); 
+         } 
+       } 
+       }
+
+
+
+
+
+
+ #include <stdio.h> 
+ #include <string.h> 
+ int main (void) { 
+    char s1[] = "recitals"; 
+    char s2[] = "articles"; 
+  char temp; 
+ int i, j; 
+    int n  = strlen(s1); 
+    int n1 = strlen(s2); 
+  // If both strings are of different length, then they are not anagrams 
+  if( n != n1) {     
+       printf("%s and %s are not anagrams! \n", s1, s2); 
+       return 0; 
+    } 
+     // lets sort both strings first − 
+  for (i = 0; i < n-1; i++) { 
+       for (j = i+1; j < n; j++) { 
+          if (s1[i] > s1[j]) { 
+             temp  = s1[i]; 
+             s1[i] = s1[j]; 
+             s1[j] = temp; 
+          } 
+          if (s2[i] > s2[j]) { 
+             temp  = s2[i]; 
+             s2[i] = s2[j]; 
+             s2[j] = temp; 
+        } 
+       } 
+      } 
+  // Compare both strings character by character 
+  for(i = 0; i<n; i++) { 
+       if(s1[i] != s2[i]) {     
+          printf("Strings are not anagrams! \n", s1, s2); 
+          return 0; 
+       } 
+      } 
+  printf("Strings are anagrams! \n"); 
+    return 0; 
+ }
+
+
+
+
+
+ #include <stdio.h> 
+ int main() {   
+     char c; 
+     printf("Enter a character: "); 
+     scanf("%c", &c);   
+      // %d displays the integer value of a character 
+     // %c displays the actual character 
+     printf("ASCII value of %c = %d", c, c); 
+      return 0;
+[4/18, 7:36 AM] Srikanth: #include <iostream> 
+ using namespace std; 
+ void findPermutations(string str, int l, int r){ 
+    if (l == r) 
+    cout<<str<<" "; 
+    else{ 
+    for (int i = l; i <= r; i++){ 
+     swap(str[l], str[i]); 
+      findPermutations(str, l+1, r); 
+     swap(str[l], str[i]); 
+     } 
+     } 
+     } 
+    int main(){ 
+    string str = "WXYZ"; 
+    int n = str.size(); 
+    findPermutations(str, 0, n-1); 
+    return 0; 
+   }
+
+
+
+
+
+
+
+ #include <stdio.h> 
+ #include <conio.h> 
+ int main() 
+ { 
+   char str[50]; 
+         int len,i; 
+         char *s; 
+  printf("Enter any String :: "); 
+    scanf("%s",str 
+    s=str; 
+     len=strlen(s); 
+         printf("\nThe Reverse of the String [ %s ] is :: "); 
+         for(i=len;i>=0;i--) 
+     { 
+        printf("%c",*(s+i)); 
+     } 
+  
+     printf("\n"); 
+  
+         return 0; 
+ }
+
+
+
+
+ #include <stdio.h> 
+  
+ int main() { 
+     int Arr[5] = {12, 56, 34, 78, 100}; 
+     int i, max = Arr[0]; 
+      
+     for(i = 1; i < 5; i++) { 
+         if(Arr[i] > max) { 
+             max = Arr[i]; 
+         } 
+     } 
+      
+     printf("Largest element present in the given array is: %d", max); 
+      
+     return 0; 
+ } 

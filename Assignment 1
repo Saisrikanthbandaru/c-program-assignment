@@ -1,1 +1,152 @@
+4.
+#include<stdio.h>
+#include<math.h>
+ int main()
+{
+ int a1,a2,a3,a4;
+ printf("Given natural number:");
+scanf("%d",&a1);
+ a2=a1+1;
+ a3=a1*a2;
+ a4=a3/2;
+ printf("%d",a4);
+return 0;
+}
+5.
+#include <stdio.h>
 
+int main() {
+    int num;
+
+    // Input the number from user
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Check if the number is positive or negative
+    if (num > 0) {
+        printf("The number is positive.\n");
+    } else if (num < 0) {
+        printf("The number is negative.\n");
+    } else {
+        printf("The number is zero.\n");
+    }
+
+    return 0;
+}
+
+3.
+#include <stdio.h>
+
+// Function to calculate GCD
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return gcd(b, a % b);
+    }
+}
+
+// Function to calculate LCM
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int main() {
+    int num1, num2;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Calculate GCD and LCM
+    int gcd_result = gcd(num1, num2);
+    int lcm_result = lcm(num1, num2);
+
+    printf("GCD of %d and %d is: %d\n", num1, num2, gcd_result);
+    printf("LCM of %d and %d is: %d\n", num1, num2, lcm_result);
+
+    return 0;
+}
+
+6.
+#include <stdio.h>
+ 
+int main()
+{
+	int n;
+	printf("SUM N NATURAL NUMBERS IS ((n(n+1))/2)");
+	return 0;
+}
+
+7.
+#include <stdio.h>
+
+int main() {
+    int num, i;
+    long long factorial = 1;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+
+    if (num < 0) {
+        printf("Error: Factorial of a negative number is undefined.");
+        return 0;
+    }
+
+    for (i = 1; i <= num; ++i) {
+        factorial *= i;
+    }
+
+    printf("Factorial of %d = %lld", num, factorial);
+    return 0;
+}
+
+2.
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0, rem;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    while (num != 0) {
+        rem = num % 10;
+        sum += rem;
+        num /= 10;
+    }
+
+    printf("The sum of the digits is: %d\n", sum);
+    return 0;
+}
+
+1.
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter the number of previous terms to add: ");
+    scanf("%d", &n);
+
+    int series[n];
+    // Initialize the first n-1 terms of the series with 1
+    for (i = 0; i < n - 1; i++) {
+        series[i] = 1;
+    }
+    // Calculate the nth term of the series
+    series[n - 1] = n;
+
+    printf("The %d-Phebonacci series is:\n", n);
+    // Print the first n terms of the series
+    for (i = 0; i < n; i++) {
+        printf("%d ", series[i]);
+    }
+    // Calculate and print the remaining terms of the series
+    for (i = n; i < series[n - 1]; i++) {
+        int sum = 0;
+        for (j = i - n; j < i; j++) {
+            sum += series[j];
+        }
+        series[i] = sum;
+        printf("%d ", series[i]);
+    }
+    printf("\n");
+    return 0;
+}
